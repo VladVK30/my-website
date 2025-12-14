@@ -4,7 +4,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultsDiv = document.getElementById('results');
     const sleepTimesDiv = document.getElementById('sleep-times');
     const useCurrentTimeBtn = document.getElementById('use-current-time');
-
+    
+    // Элементы калькулятора ИМТ
+    const heightInput = document.getElementById('height');
+    const weightInput = document.getElementById('weight');
+    const calculateBmiBtn = document.getElementById('calculate-bmi-btn');
+    const bmiResultsDiv = document.getElementById('bmi-results');
+    const bmiValueDiv = document.getElementById('bmi-value');
+    const bmiCategoryDiv = document.getElementById('bmi-category');
+    const bmiDescriptionDiv = document.getElementById('bmi-description');
+    
+    // Элементы вкладок
+    const sleepTab = document.getElementById('sleep-tab');
+    const bmiTab = document.getElementById('bmi-tab');
+    const sleepCalculator = document.getElementById('sleep-calculator');
+    const bmiCalculator = document.getElementById('bmi-calculator');
+    
     // Установить текущее время + 8 часов (типичное время сна)
     function setDefaultTime() {
         const now = new Date();
@@ -77,5 +92,69 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Прокрутка к результатам
         resultsDiv.scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    // Функция переключения вкладок
+    function switchTab(showTabId, hideTabId, activeTabBtn, inactiveTabBtn) {
+        document.getElementById(showTabId).classList.remove('hidden');
+        document.getElementById(hideTabId).classList.add('hidden');
+        
+        activeTabBtn.classList.add('active-tab');
+        inactiveTabBtn.classList.remove('active-tab');
+    }
+    
+    // Обработчики вкладок
+    sleepTab.addEventListener('click', function() {
+        switchTab('sleep-calculator', 'bmi-calculator', sleepTab, bmiTab);
+    });
+    
+    bmiTab.addEventListener('click', function() {
+        switchTab('bmi-calculator', 'sleep-calculator', bmiTab, sleepTab);
+    });
+    
+    // Расчет ИМТ
+    calculateBmiBtn.addEventListener('click', function() {
+        const height = parseFloat(heightInput.value);
+        const weight = parseFloat(weightInput.value);
+        
+        if (!height || !weight || height <= 0 || weight <= 0) {
+            alert('Пожалуйста, введите корректные значения роста и веса');
+            return;
+        }
+        
+        // Преобразование роста из см в м
+        const heightInMeters = height / 100;
+        
+        // Расчет ИМТ
+        const bmi = weight / (heightInMeters * heightInMeters);
+        
+        // Определение категории
+        let category = '';
+        let description = '';
+        
+        if (bmi < 18.5) {
+            category = 'Недостаточный вес';
+            description = 'Возможные риски для здоровья. Рекомендуется проконсультироваться с врачом.';
+        } else if (bmi >= 18.5 && bmi < 25) {
+            category = 'Нормальный вес';
+            description = 'Отличный результат! Так держать для поддержания здоровья.';
+        } else if (bmi >= 25 && bmi < 30) {
+            category = 'Избыточный вес';
+            description = 'Рекомендуется обратить внимание на питание и физическую активность.';
+        } else {
+            category = 'Ожирение';
+            description = 'Важно проконсультироваться с врачом для составления плана по снижению веса.';
+        }
+        
+        // Отображение результатов
+        bmiValueDiv.textContent = bmi.toFixed(1);
+        bmiCategoryDiv.textContent = category;
+        bmiDescriptionDiv.textContent = description;
+        
+        // Показать результаты
+        bmiResultsDiv.classList.remove('hidden');
+        
+        // Прокрутка к результатам
+        bmiResultsDiv.scrollIntoView({ behavior: 'smooth' });
     });
 });

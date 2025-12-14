@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор сна</title>
+    <title>Калькуляторы здоровья</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="sleep_calculator_styles.css">
@@ -13,9 +13,18 @@
         <div class="max-w-2xl mx-auto">
             <!-- Заголовок -->
             <div class="text-center mb-12">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Калькулятор сна</h1>
-                <p class="text-xl opacity-90">Рассчитайте оптимальное время для отхода ко сну</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Калькуляторы здоровья</h1>
+                <p class="text-xl opacity-90">Рассчитайте оптимальное время сна и индекс массы тела</p>
             </div>
+            
+            <!-- Навигационные вкладки -->
+            <div class="flex mb-8 border-b border-white border-opacity-30">
+                <button id="sleep-tab" class="tab-button px-6 py-3 font-medium text-lg border-b-2 border-transparent hover:border-white hover:border-opacity-50 active-tab">Сон</button>
+                <button id="bmi-tab" class="tab-button px-6 py-3 font-medium text-lg border-b-2 border-transparent hover:border-white hover:border-opacity-50">ИМТ</button>
+            </div>
+            
+            <!-- Калькулятор сна -->
+            <div id="sleep-calculator" class="calculator-section">
 
             <!-- Основной блок калькулятора -->
             <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-6 shadow-2xl">
@@ -73,6 +82,79 @@
                 <p>
                     Калькулятор рассчитывает время, когда нужно лечь спать, чтобы проснуться в конце цикла сна. Оптимально 5-6 полных циклов (7.5-9 часов сна).
                 </p>
+            </div>
+        </div>
+        
+        <!-- Калькулятор ИМТ -->
+        <div id="bmi-calculator" class="calculator-section hidden">
+            <div class="max-w-2xl mx-auto">
+                <!-- Основной блок калькулятора ИМТ -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-6 shadow-2xl">
+                    <!-- Заголовок -->
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold mb-2">Калькулятор ИМТ</h2>
+                        <p class="opacity-90">Рассчитайте свой индекс массы тела</p>
+                    </div>
+                    
+                    <!-- Форма ввода -->
+                    <div class="space-y-6">
+                        <div>
+                            <label for="height" class="block text-lg font-medium mb-3">
+                                <i class="fas fa-ruler-vertical mr-2"></i>Рост (см)
+                            </label>
+                            <input type="number" id="height" placeholder="Введите ваш рост в сантиметрах" class="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-300 w-full">
+                        </div>
+                        
+                        <div>
+                            <label for="weight" class="block text-lg font-medium mb-3">
+                                <i class="fas fa-weight mr-2"></i>Вес (кг)
+                            </label>
+                            <input type="number" id="weight" placeholder="Введите ваш вес в килограммах" class="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-300 w-full">
+                        </div>
+                        
+                        <div class="text-center">
+                            <button id="calculate-bmi-btn" class="bg-white text-purple-800 font-bold py-4 px-8 rounded-full text-lg hover:bg-purple-100 transition-all duration-300 shadow-lg">
+                                <i class="fas fa-calculator mr-2"></i> Рассчитать ИМТ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Результаты ИМТ -->
+                    <div id="bmi-results" class="hidden mt-8">
+                        <div class="bg-white bg-opacity-20 rounded-xl p-6 text-center">
+                            <h3 class="text-2xl font-bold mb-2">Ваш ИМТ</h3>
+                            <div class="text-5xl font-bold text-yellow-300 mb-4" id="bmi-value">0</div>
+                            <div class="text-xl mb-4" id="bmi-category">-</div>
+                            <div class="text-sm opacity-80" id="bmi-description">-</div>
+                        </div>
+                        
+                        <div class="mt-6 bg-white bg-opacity-10 rounded-lg p-4">
+                            <h4 class="font-medium mb-3 flex items-center">
+                                <i class="fas fa-info-circle mr-2"></i> Что означает ваш ИМТ:
+                            </h4>
+                            <ul class="space-y-2 text-sm opacity-90">
+                                <li class="flex justify-between"><span>Недостаточный вес:</span><span>&lt; 18.5</span></li>
+                                <li class="flex justify-between"><span>Нормальный вес:</span><span>18.5 - 24.9</span></li>
+                                <li class="flex justify-between"><span>Избыточный вес:</span><span>25 - 29.9</span></li>
+                                <li class="flex justify-between"><span>Ожирение:</span><span>≥ 30</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Информация об ИМТ -->
+                <div class="mt-8 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-info-circle mr-2"></i> Что такое ИМТ?
+                    </h3>
+                    <p class="mb-4">
+                        Индекс массы тела (ИМТ) — это числовое значение, которое позволяет оценить соответствие массы тела росту человека. 
+                        Он используется для определения наличия или отсутствия избыточной массы тела и ожирения.
+                    </p>
+                    <p>
+                        Формула расчета: ИМТ = вес (кг) / (рост (м))²
+                    </p>
+                </div>
             </div>
         </div>
     </div>
