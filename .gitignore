@@ -42,10 +42,13 @@ coverage/
 htmlcov/
 .coverage
 
-# Package management
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Package manager caches
+.npm/
+.yarn/
+.pip/
+.mypy_cache/
+.pytest_cache/
+.gradle/
 
 # Compressed files
 *.zip
@@ -70,74 +73,4 @@ yarn-error.log*
 *.tar.bz2
 *.tar.xz
 *.tar.zst
-
-# Python specific
-*.pyc
-__pycache__/
-.pytest_cache/
-.mypy_cache/
-*.egg-info/
-
-# Node.js specific
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Java specific
-*.class
-*.jar
-*.war
-*.ear
-target/
-.gradle/
-
-# C/C++ specific
-*.o
-*.obj
-*.a
-*.lib
-*.so
-*.dll
-*.dylib
-*.exe
-
-# Go specific
-*.o
-*.a
-*.so
-*.exe
-*.test
-*.prof
-vendor/
-
-# Ruby specific
-*.gem
-*.rbc
-.bundle/
-vendor/bundle/
-vendor/cache/
-vendor/gems/
-vendor/ruby/
-
-# Rust specific
-target/
-Cargo.lock
-
-# PHP specific
-vendor/
-
-# .NET specific
-bin/
-obj/
-*.sln
-*.csproj.user
-
-# Backup files
-*~
-\#*\#
-*.bak
-*.orig
-*.rej
-*.~*
 ```
