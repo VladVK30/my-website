@@ -18,10 +18,9 @@
             </div>
             
             <!-- Навигационные вкладки -->
-            <div class="flex mb-8 border-b border-white border-opacity-30 flex-wrap">
+            <div class="flex mb-8 border-b border-white border-opacity-30">
                 <button id="sleep-tab" class="tab-button px-6 py-3 font-medium text-lg border-b-2 border-transparent hover:border-white hover:border-opacity-50 active-tab">Сон</button>
                 <button id="bmi-tab" class="tab-button px-6 py-3 font-medium text-lg border-b-2 border-transparent hover:border-white hover:border-opacity-50">ИМТ</button>
-                <button id="notes-tab" class="tab-button px-6 py-3 font-medium text-lg border-b-2 border-transparent hover:border-white hover:border-opacity-50">Заметки</button>
             </div>
             
             <!-- Калькулятор сна -->
@@ -85,7 +84,6 @@
             </div>
         </div>
         
-    </div>
         <!-- Калькулятор ИМТ -->
         <div id="bmi-calculator" class="calculator-section hidden">
             <div class="max-w-2xl mx-auto">
@@ -155,86 +153,6 @@
                     <p>
                         Формула расчета: ИМТ = вес (кг) / (рост (м))²
                     </p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Заметки (Петр Людвиг) -->
-        <div id="notes-calculator" class="calculator-section hidden">
-            <div class="max-w-6xl mx-auto">
-                <!-- Заголовок -->
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold mb-2">Заметки по методу Петра Людвига</h2>
-                    <p class="opacity-90">Структурируйте задачи и победите прокрастинацию</p>
-                </div>
-                
-                <!-- Форма добавления заметки -->
-                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-6 shadow-2xl mb-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <input type="text" id="note-text" placeholder="Что нужно сделать?" class="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-300 w-full">
-                        </div>
-                        <div class="flex gap-2">
-                            <select id="note-type" class="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-300 flex-1">
-                                <option value="today" class="text-gray-800">📍 Сделать сегодня</option>
-                                <option value="someday" class="text-gray-800">📅 Сделать (когда-нибудь)</option>
-                                <option value="ideas" class="text-gray-800">💡 Идеи</option>
-                                <option value="diary" class="text-gray-800">📖 Ежедневник</option>
-                            </select>
-                            <button id="add-note-btn" class="bg-white text-purple-800 font-bold py-3 px-6 rounded-lg hover:bg-purple-100 transition-all duration-300">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="date-time-container" class="hidden">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="date" id="note-date" class="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-300">
-                            <input type="time" id="note-time" class="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-300">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Четыре колонки заметок -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Сделать сегодня -->
-                    <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-4">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <span class="mr-2">📍</span> Сделать сегодня
-                        </h3>
-                        <div id="today-notes" class="space-y-3 min-h-[200px]">
-                            <!-- Заметки будут здесь -->
-                        </div>
-                    </div>
-                    
-                    <!-- Сделать (когда-нибудь) -->
-                    <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-4">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <span class="mr-2">📅</span> Сделать
-                        </h3>
-                        <div id="someday-notes" class="space-y-3 min-h-[200px]">
-                            <!-- Заметки будут здесь -->
-                        </div>
-                    </div>
-                    
-                    <!-- Идеи -->
-                    <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-4">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <span class="mr-2">💡</span> Идеи
-                        </h3>
-                        <div id="ideas-notes" class="space-y-3 min-h-[200px]">
-                            <!-- Заметки будут здесь -->
-                        </div>
-                    </div>
-                    
-                    <!-- Ежедневник -->
-                    <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-4">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <span class="mr-2">📖</span> Ежедневник
-                        </h3>
-                        <div id="diary-notes" class="space-y-3 min-h-[200px]">
-                            <!-- Заметки будут здесь -->
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
