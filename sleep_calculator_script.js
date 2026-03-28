@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <table class="w-full text-white">
                 <thead>
                     <tr class="border-b border-white border-opacity-30">
-                        <th class="py-3 px-2 text-left font-semibold">Навык</th>
+                        <th class="py-3 px-2 text-left font-semibold min-w-[250px] w-[300px]">Навык</th>
                         ${Array.from({length: daysInMonth}, (_, i) => 
                             `<th class="py-3 px-1 text-center font-semibold text-sm">${i + 1}</th>`
                         ).join('')}
@@ -410,10 +410,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             html += `
                 <tr class="border-b border-white border-opacity-10 hover:bg-white hover:bg-opacity-5">
-                    <td class="py-3 px-2">
+                    <td class="py-3 px-2 min-w-[250px] w-[300px]">
                         <input type="text" value="${skill.name}" 
                             onchange="updateSkillName(${skillIndex}, this.value)"
-                            class="bg-transparent border-none focus:outline-none focus:ring-1 focus:ring-purple-300 w-full text-sm">
+                            class="bg-transparent border-none focus:outline-none focus:ring-1 focus:ring-purple-300 w-full text-sm whitespace-normal break-words">
                     </td>
                     ${Array.from({length: daysInMonth}, (_, day) => {
                         const dayKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day + 1).padStart(2, '0')}`;
